@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Search — Aananthan Mariappan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0e10;--bg2:#13151a;--bg3:#1a1d24;--amber:#f5a623;--ag:rgba(245,166,35,0.1);--white:#eeeae0;--muted:#7a7d85;--border:rgba(245,166,35,0.18);--green:#30d158;--red:#ff453a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;min-height:100vh;-webkit-font-smoothing:antialiased;}
+.hdr{padding:18px 48px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:rgba(13,14,16,0.96);position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);}
+.back{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:6px 14px;border:1px solid var(--border);transition:all .2s;}
+.back:hover{color:var(--amber);border-color:var(--amber);}
+.htitle{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.htitle span{color:var(--amber);}
+.hbadge{display:flex;align-items:center;gap:7px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--green);letter-spacing:2px;}
+.pd{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pg 2s infinite;}
+@keyframes pg{0%,100%{box-shadow:0 0 0 0 rgba(48,209,88,.5)}50%{box-shadow:0 0 0 5px rgba(48,209,88,0)}}
+
+/* SETUP STEPS */
+.setup{max-width:1060px;margin:28px auto;padding:0 40px;}
+.setup-card{background:var(--bg2);border:1px solid var(--border);padding:28px 32px;margin-bottom:12px;}
+.setup-card.done{border-color:rgba(48,209,88,.4);background:rgba(48,209,88,.03);}
+.setup-card.done .step-num{background:var(--green);color:#000;}
+.step-header{display:flex;align-items:center;gap:14px;margin-bottom:0;cursor:pointer;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--amber);color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-size:12px;font-weight:700;flex-shrink:0;}
+.step-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+.step-status{margin-left:auto;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;}
+.step-body{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);display:none;}
+.setup-card.open .step-body{display:block;}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;}
+.step-desc a{color:var(--amber);text-decoration:none;}
+.step-desc a:hover{text-decoration:underline;}
+.step-desc code{font-family:'Share Tech Mono',monospace;font-size:11px;background:var(--bg3);padding:2px 7px;color:var(--amber);}
+.inp-row{display:flex;gap:8px;flex-wrap:wrap;}
+.sinp{background:var(--bg);border:1px solid var(--border);color:var(--white);font-family:'Share Tech Mono',monospace;font-size:12px;padding:10px 14px;outline:none;flex:1;min-width:240px;letter-spacing:1px;transition:border-color .2s;}
+.sinp:focus{border-color:var(--amber);}
+.sbtn{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--amber);color:var(--bg);border:none;padding:10px 20px;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.sbtn:hover{background:#ffb83f;}
+.sbtn.sec{background:transparent;color:var(--amber);border:1px solid var(--border);}
+.sbtn.sec:hover{border-color:var(--amber);background:var(--ag);}
+.test-result{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:1px;margin-top:10px;padding:8px 12px;display:none;}
+.test-result.ok{color:var(--green);background:rgba(48,209,88,.07);border:1px solid rgba(48,209,88,.2);}
+.test-result.err{color:var(--red);background:rgba(255,69,58,.07);border:1px solid rgba(255,69,58,.2);}
+
+/* SEARCH */
+.wrap{max-width:1060px;margin:0 auto;padding:0 40px;}
+.search-box{padding:24px 0 18px;}
+.search-row{display:grid;grid-template-columns:1fr 200px 160px auto;gap:10px;margin-bottom:12px;}
+.iw{display:flex;flex-direction:column;gap:5px;}
+.ilbl{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--amber);text-transform:uppercase;}
+input,select{background:var(--bg2);border:1px solid var(--border);color:var(--white);font-family:'Barlow',sans-serif;font-size:14px;padding:10px 14px;outline:none;transition:border-color .2s;width:100%;}
+input:focus,select:focus{border-color:var(--amber);}
+select{-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23f5a623'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+select option{background:var(--bg2);}
+.go{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--amber);color:var(--bg);border:none;padding:10px 24px;cursor:pointer;transition:all .2s;white-space:nowrap;align-self:flex-end;}
+.go:hover{background:#ffb83f;transform:translateY(-1px);}
+.go:disabled{background:var(--muted);cursor:not-allowed;transform:none;}
+.chips{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:18px;}
+.cl{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-right:4px;}
+.chip{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;background:none;}
+.chip:hover,.chip.on{border-color:var(--amber);color:var(--amber);background:var(--ag);}
+
+/* STATUS */
+.sbar{background:var(--bg2);border:1px solid var(--border);padding:16px 24px;margin-bottom:14px;display:none;align-items:center;gap:14px;}
+.sdots{display:flex;gap:5px;}
+.sd{width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block;}
+.sd:nth-child(1){animation:db .9s 0s infinite;}
+.sd:nth-child(2){animation:db .9s .2s infinite;}
+.sd:nth-child(3){animation:db .9s .4s infinite;}
+@keyframes db{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+.smsg{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;}
+
+/* RESULTS */
+.rhdr{display:flex;align-items:center;justify-content:space-between;padding:10px 0 14px;border-bottom:1px solid var(--border);margin-bottom:14px;}
+.rcount{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;}
+.rcount b{color:var(--amber);}
+.frow{display:flex;gap:6px;}
+.fbtn{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border);color:var(--muted);background:none;cursor:pointer;transition:all .2s;}
+.fbtn:hover,.fbtn.on{border-color:var(--amber);color:var(--amber);}
+.jcard{background:var(--bg2);border:1px solid var(--border);padding:22px 26px;margin-bottom:8px;transition:all .25s;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start;}
+.jcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--amber);transform:scaleY(0);transform-origin:top;transition:transform .3s;}
+.jcard:hover{background:#15171e;border-color:rgba(245,166,35,.35);}
+.jcard:hover::before{transform:scaleY(1);}
+.jcard.isnew::after{content:'NEW';position:absolute;top:10px;right:10px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--green);border:1px solid rgba(48,209,88,.3);padding:2px 7px;background:rgba(48,209,88,.07);}
+.jt{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--white);margin-bottom:5px;}
+.jm{display:flex;flex-wrap:wrap;gap:12px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.jco{color:var(--white);font-size:11px;}
+.jsal{color:var(--green);}
+.jtype{color:var(--amber);}
+.jd{font-size:13px;color:var(--muted);line-height:1.7;max-width:660px;}
+.jtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.jtag{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;padding:3px 9px;border:1px solid var(--border);color:var(--muted);text-transform:uppercase;}
+.jsrc{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(245,166,35,.5);letter-spacing:1px;border:1px solid rgba(245,166,35,.2);padding:2px 7px;}
+.jr{display:flex;flex-direction:column;gap:8px;align-items:flex-end;min-width:100px;}
+.aply{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--amber);color:var(--bg);border:none;padding:8px 16px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s;white-space:nowrap;}
+.aply:hover{background:#ffb83f;}
+.empty{text-align:center;padding:60px 20px;}
+.ei{font-size:44px;margin-bottom:14px;}
+.et{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:8px;}
+.es{font-size:14px;color:var(--muted);line-height:1.7;}
+.lbar{height:2px;background:var(--bg3);margin:0 0 4px;position:relative;overflow:hidden;}
+.lbar::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:var(--amber);animation:ls 1.2s infinite ease-in-out;}
+@keyframes ls{to{left:140%;}}
+.errbox{background:rgba(255,69,58,.07);border:1px solid rgba(255,69,58,.25);padding:16px 20px;margin-bottom:14px;font-size:13px;color:var(--red);line-height:1.7;}
+
+@media(max-width:768px){
+  .hdr{padding:14px 16px;}
+  .wrap,.setup{padding-left:16px;padding-right:16px;}
+  .search-row{grid-template-columns:1fr;}
+  .jcard{grid-template-columns:1fr;}
+  .jr{flex-direction:row;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div style="display:flex;align-items:center;gap:14px;">
+    <a href="index.html" class="back">← Portfolio</a>
+    <div class="htitle">Job <span>Search</span> Tool</div>
+  </div>
+  <div class="hbadge"><span class="pd"></span>Live · LinkedIn + Indeed</div>
+</div>
+
+<!-- ONE-TIME SETUP STEPS -->
+<div class="setup" id="setup-section">
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:16px;">
+    One-Time Setup <span style="font-size:14px;font-weight:400;color:var(--muted);letter-spacing:0;text-transform:none;">— takes ~5 minutes</span>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="setup-card open" id="step1-card">
+    <div class="step-header" onclick="toggleStep('step1')">
+      <div class="step-num" id="step1-num">1</div>
+      <div class="step-title">Deploy Cloudflare Worker (Free)</div>
+      <div class="step-status" id="step1-status" style="color:var(--muted);">PENDING</div>
+    </div>
+    <div class="step-body">
+      <div class="step-desc">
+        Create a free Cloudflare account at <a href="https://workers.cloudflare.com" target="_blank">workers.cloudflare.com</a>, 
+        click <strong>Create Worker</strong>, delete the default code, and paste the contents of 
+        <code>cloudflare-worker.js</code> (the file in this chat). Click <strong>Save and Deploy</strong>. 
+        Copy your worker URL — it looks like <code>https://job-search.YOUR-NAME.workers.dev</code>
+      </div>
+      <div class="inp-row">
+        <input class="sinp" id="worker-url" placeholder="https://job-search.YOUR-NAME.workers.dev" type="url"/>
+        <button class="sbtn" onclick="testWorker()">Test Connection</button>
+        <button class="sbtn sec" onclick="saveWorker()">Save URL</button>
+      </div>
+      <div class="test-result" id="worker-test-result"></div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="setup-card" id="step2-card">
+    <div class="step-header" onclick="toggleStep('step2')">
+      <div class="step-num" id="step2-num">2</div>
+      <div class="step-title">Enter Apify Token</div>
+      <div class="step-status" id="step2-status" style="color:var(--muted);">PENDING</div>
+    </div>
+    <div class="step-body">
+      <div class="step-desc">
+        Go to <a href="https://console.apify.com/account/integrations" target="_blank">console.apify.com → Settings → Integrations</a> 
+        and copy your Personal API Token (starts with <code>apify_api_…</code>). 
+        Also subscribe to these two free actors: 
+        <a href="https://apify.com/harvestapi/linkedin-job-search" target="_blank">LinkedIn scraper</a> and 
+        <a href="https://apify.com/misceres/indeed-scraper" target="_blank">Indeed scraper</a>.
+      </div>
+      <div class="inp-row">
+        <input class="sinp" id="apify-token" type="password" placeholder="apify_api_xxxxxxxxxxxxxxxxxxxx"/>
+        <button class="sbtn" onclick="saveToken()">Save Token</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="setup-card" id="step3-card">
+    <div class="step-header" onclick="toggleStep('step3')">
+      <div class="step-num" id="step3-num">3</div>
+      <div class="step-title">Ready to Search!</div>
+      <div class="step-status" id="step3-status" style="color:var(--muted);">WAITING</div>
+    </div>
+    <div class="step-body">
+      <div class="step-desc">Both steps complete. Scroll down and start searching — live LinkedIn and Indeed jobs will appear directly on this page.</div>
+      <button class="sbtn" onclick="document.getElementById('role').focus();scrollToSearch();">Go to Search →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="wrap">
+  <div class="search-box">
+    <div class="search-row">
+      <div class="iw"><label class="ilbl">Role / Keywords</label><input type="text" id="role" value="Manufacturing Engineer"/></div>
+      <div class="iw"><label class="ilbl">Location</label><input type="text" id="loc" value="United States"/></div>
+      <div class="iw">
+        <label class="ilbl">Date Posted</label>
+        <select id="dpf">
+          <option value="7">Past Week</option>
+          <option value="30">Past Month</option>
+          <option value="3">Past 3 Days</option>
+          <option value="1">Today</option>
+        </select>
+      </div>
+      <button class="go" id="go-btn" onclick="runSearch()">Search →</button>
+    </div>
+    <div class="chips">
+      <span class="cl">Quick:</span>
+      <button class="chip on" onclick="sr(this,'Manufacturing Engineer')">Manufacturing Eng.</button>
+      <button class="chip" onclick="sr(this,'Process Engineer')">Process Eng.</button>
+      <button class="chip" onclick="sr(this,'Mechanical Engineer')">Mechanical Eng.</button>
+      <button class="chip" onclick="sr(this,'NPI Engineer')">NPI Engineer</button>
+      <button class="chip" onclick="sr(this,'Industrial Engineer')">Industrial Eng.</button>
+      <button class="chip" onclick="sr(this,'Equipment Engineer')">Equipment Eng.</button>
+      <button class="chip" onclick="sr(this,'Automation Engineer')">Automation Eng.</button>
+      <button class="chip" onclick="sr(this,'Robotics Engineer')">Robotics Eng.</button>
+      <button class="chip" onclick="sr(this,'Design Engineer')">Design Eng.</button>
+      <button class="chip" onclick="sr(this,'Technical Program Manager')">TPM</button>
+    </div>
+  </div>
+
+  <div class="sbar" id="sbar">
+    <div class="sdots"><span class="sd"></span><span class="sd"></span><span class="sd"></span></div>
+    <span class="smsg" id="smsg">SEARCHING…</span>
+  </div>
+
+  <div id="rhdr-wrap" style="display:none;">
+    <div class="rhdr">
+      <div class="rcount">Found <b id="rcount">0</b> jobs · <span id="rsrc"></span> · <span id="rtime"></span></div>
+      <div class="frow">
+        <button class="fbtn on" onclick="fj(this,'all')">All</button>
+        <button class="fbtn" onclick="fj(this,'remote')">Remote</button>
+        <button class="fbtn" onclick="fj(this,'fulltime')">Full Time</button>
+        <button class="fbtn" onclick="fj(this,'contract')">Contract</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="results">
+    <div class="empty">
+      <div class="ei">⚙️</div>
+      <div class="et">Complete Setup Above</div>
+      <div class="es">Deploy the Cloudflare Worker, add your Apify token,<br>then hit <strong style="color:var(--amber)">Search →</strong> to pull live jobs onto this page.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const WK = 'cf_worker_url', TK = 'apify_token_am';
+let allJobs = [], curFilter = 'all';
+
+// ── SETUP ─────────────────────────────────────────────────────────
+function toggleStep(id) {
+  const card = document.getElementById(id + '-card');
+  card.classList.toggle('open');
+}
+
+async function testWorker() {
+  const url = document.getElementById('worker-url').value.trim();
+  const el = document.getElementById('worker-test-result');
+  if (!url) { showTestResult(el, false, 'Please enter your worker URL first'); return; }
+  el.style.display = 'block'; el.className = 'test-result'; el.textContent = 'Testing connection…';
+  try {
+    const res = await fetch(url + '/health');
+    const data = await res.json();
+    if (data.status === 'ok') {
+      showTestResult(el, true, '✓ Worker connected! Save your URL to proceed.');
+    } else {
+      showTestResult(el, false, 'Worker responded but returned unexpected data: ' + JSON.stringify(data));
+    }
+  } catch(e) {
+    showTestResult(el, false, 'Could not connect. Make sure the URL is correct and the worker is deployed. Error: ' + e.message);
+  }
+}
+
+function showTestResult(el, ok, msg) {
+  el.style.display = 'block';
+  el.className = 'test-result ' + (ok ? 'ok' : 'err');
+  el.textContent = msg;
+}
+
+function saveWorker() {
+  const url = document.getElementById('worker-url').value.trim();
+  if (!url.startsWith('http')) { alert('Please enter a valid URL'); return; }
+  localStorage.setItem(WK, url);
+  markStepDone('step1', 'CONNECTED');
+  document.getElementById('step2-card').classList.add('open');
+  checkSetupComplete();
+}
+
+function saveToken() {
+  const t = document.getElementById('apify-token').value.trim();
+  if (!t) { alert('Please enter your Apify token'); return; }
+  if (!t.startsWith('apify_api_')) { alert('Token should start with apify_api_...'); return; }
+  localStorage.setItem(TK, t);
+  markStepDone('step2', 'SAVED');
+  document.getElementById('step3-card').classList.add('open');
+  checkSetupComplete();
+}
+
+function markStepDone(id, label) {
+  document.getElementById(id + '-card').classList.add('done');
+  document.getElementById(id + '-card').classList.remove('open');
+  document.getElementById(id + '-status').textContent = label;
+  document.getElementById(id + '-status').style.color = 'var(--green)';
+  document.getElementById(id + '-num').style.background = 'var(--green)';
+  document.getElementById(id + '-num').style.color = '#000';
+}
+
+function checkSetupComplete() {
+  const wk = localStorage.getItem(WK);
+  const tk = localStorage.getItem(TK);
+  if (wk && tk) {
+    markStepDone('step3', 'READY');
+    document.getElementById('results').innerHTML = `<div class="empty"><div class="ei">🚀</div><div class="et">All Set!</div><div class="es">Pick a role above and hit <strong style="color:var(--amber)">Search →</strong></div></div>`;
+  }
+}
+
+function scrollToSearch() {
+  document.getElementById('role').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// Restore saved values
+window.addEventListener('load', () => {
+  const wk = localStorage.getItem(WK);
+  const tk = localStorage.getItem(TK);
+  if (wk) { document.getElementById('worker-url').value = wk; markStepDone('step1', 'CONNECTED'); }
+  if (tk) { document.getElementById('apify-token').value = tk; markStepDone('step2', 'SAVED'); }
+  checkSetupComplete();
+  if (wk && tk) {
+    document.getElementById('setup-section').style.display = 'none';
+  }
+});
+
+// ── SEARCH ────────────────────────────────────────────────────────
+function sr(btn, role) {
+  document.getElementById('role').value = role;
+  document.querySelectorAll('.chip').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+async function runSearch() {
+  const wk = localStorage.getItem(WK);
+  const tk = localStorage.getItem(TK);
+  if (!wk || !tk) {
+    document.getElementById('setup-section').style.display = 'block';
+    document.getElementById('setup-section').scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+
+  const role = document.getElementById('role').value.trim() || 'Manufacturing Engineer';
+  const loc  = document.getElementById('loc').value.trim() || 'United States';
+  const dp   = parseInt(document.getElementById('dpf').value);
+  const btn  = document.getElementById('go-btn');
+
+  btn.disabled = true; btn.textContent = 'Searching…';
+  allJobs = [];
+  document.getElementById('rhdr-wrap').style.display = 'none';
+  document.getElementById('sbar').style.display = 'flex';
+  document.getElementById('smsg').textContent = 'CONNECTING TO APIFY…';
+  document.getElementById('results').innerHTML = `<div style="padding:20px 0">
+    <div class="lbar"></div><div class="lbar" style="animation-delay:.2s"></div><div class="lbar" style="animation-delay:.4s"></div>
+    <div style="text-align:center;margin-top:18px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;">
+      SCRAPING LINKEDIN + INDEED — ~20 SECONDS…
+    </div>
+  </div>`;
+
+  document.getElementById('smsg').textContent = 'SCRAPING LINKEDIN + INDEED…';
+
+  try {
+    const res = await fetch(wk + '/search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: tk, role, location: loc, datePosted: dp, maxItems: 25 })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || `Worker error ${res.status}`);
+    }
+
+    allJobs = data.jobs || [];
+    allJobs.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+    const errors = data.errors || [];
+    document.getElementById('sbar').style.display = 'none';
+    btn.disabled = false; btn.textContent = 'Search →';
+    renderResults(errors);
+
+  } catch(e) {
+    document.getElementById('sbar').style.display = 'none';
+    btn.disabled = false; btn.textContent = 'Search →';
+    document.getElementById('results').innerHTML = `<div class="errbox">
+      <strong>⚠ Error:</strong> ${esc(e.message)}<br><br>
+      Make sure your Cloudflare Worker is deployed and your Apify token is valid.
+    </div>`;
+  }
+}
+
+// ── RENDER ────────────────────────────────────────────────────────
+function renderResults(errors = []) {
+  const errHtml = errors.length
+    ? `<div class="errbox"><strong>⚠ Partial results:</strong><br>${errors.map(e => '• ' + esc(e)).join('<br>')}</div>`
+    : '';
+
+  const jobs = getFiltered();
+  document.getElementById('rhdr-wrap').style.display = 'block';
+  document.getElementById('rcount').textContent = jobs.length;
+  document.getElementById('rsrc').textContent = [...new Set(allJobs.map(j => j.source))].join(' + ');
+  document.getElementById('rtime').textContent = new Date().toLocaleTimeString();
+
+  if (!jobs.length) {
+    document.getElementById('results').innerHTML = errHtml + `<div class="empty"><div class="ei">📭</div><div class="et">No Results</div><div class="es">Try a broader search or longer date range.</div></div>`;
+    return;
+  }
+
+  document.getElementById('results').innerHTML = errHtml + jobs.map(j => {
+    const isNew = j.date && (Date.now() - new Date(j.date)) < 3 * 86400000;
+    return `<div class="jcard ${isNew ? 'isnew' : ''}">
+      <div>
+        <div class="jt">${esc(j.title)}</div>
+        <div class="jm">
+          <span class="jco">${esc(j.company)}</span>
+          <span>📍 ${esc(j.location)}</span>
+          ${j.salary ? `<span class="jsal">💰 ${esc(j.salary)}</span>` : ''}
+          <span class="jtype">${esc(j.type || 'Full Time')}</span>
+          <span>${ago(j.date)}</span>
+        </div>
+        ${j.desc ? `<div class="jd">${esc(j.desc)}…</div>` : ''}
+        <div class="jtags">
+          ${(j.tags||[]).filter(Boolean).slice(0,4).map(t => `<span class="jtag">${esc(t)}</span>`).join('')}
+          <span class="jsrc">${esc(j.source)}</span>
+        </div>
+      </div>
+      <div class="jr">
+        <a href="${esc(j.url||'#')}" target="_blank" class="aply">Apply →</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function getFiltered() {
+  if (curFilter === 'all') return allJobs;
+  return allJobs.filter(j => {
+    const t = (j.type||'').toLowerCase(), l = (j.location||'').toLowerCase();
+    if (curFilter === 'remote')   return t.includes('remote') || l.includes('remote');
+    if (curFilter === 'fulltime') return t.includes('full');
+    if (curFilter === 'contract') return t.includes('contract') || t.includes('freelance');
+    return true;
+  });
+}
+
+function fj(btn, type) {
+  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  curFilter = type;
+  document.getElementById('rcount').textContent = getFiltered().length;
+  renderResults();
+}
+
+function ago(d) {
+  if (!d) return '';
+  const s = Math.floor((Date.now() - new Date(d)) / 1000);
+  if (s < 3600) return Math.floor(s/60) + 'm ago';
+  if (s < 86400) return Math.floor(s/3600) + 'h ago';
+  if (s < 604800) return Math.floor(s/86400) + 'd ago';
+  return new Date(d).toLocaleDateString();
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+</body>
+</html>
