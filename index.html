@@ -16,7 +16,6 @@
     --blue-light: #e8f0fe;
     --blue-mid: #d2e3fc;
     --green: #188038;
-    --green-light: #e6f4ea;
     --yellow: #f29900;
     --ink: #202124;
     --ink-muted: #5f6368;
@@ -32,6 +31,7 @@
   html { scroll-behavior: smooth; }
   body { font-family: var(--body); background: var(--surface); color: var(--ink); font-size: 14px; line-height: 1.6; }
 
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
@@ -40,42 +40,26 @@
 
   .nav-left { display: flex; align-items: center; gap: 8px; cursor: pointer; }
 
-  .nav-logo {
-    width: 32px; height: 32px; border-radius: 50%; background: var(--blue);
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-family: var(--sans); font-weight: 700; font-size: 14px; flex-shrink: 0;
-  }
+  .nav-logo { width: 32px; height: 32px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; color: white; font-family: var(--sans); font-weight: 700; font-size: 14px; flex-shrink: 0; }
 
   .nav-title { font-family: var(--sans); font-size: 18px; font-weight: 400; color: var(--ink); }
   .nav-title span { color: var(--blue); font-weight: 500; }
+
   .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
 
-  .nav-links a {
-    font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink-muted);
-    text-decoration: none; padding: 8px 12px; border-radius: 4px;
-    transition: background 0.15s, color 0.15s; cursor: pointer;
-  }
-
+  .nav-links a { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink-muted); text-decoration: none; padding: 8px 12px; border-radius: 4px; transition: background 0.15s, color 0.15s; cursor: pointer; }
   .nav-links a:hover { background: var(--surface); color: var(--blue); }
-  .nav-links a.active { color: var(--blue); background: var(--blue-light); }
+
   .nav-cta { background: var(--blue) !important; color: white !important; border-radius: 4px !important; padding: 8px 16px !important; font-weight: 500 !important; }
   .nav-cta:hover { background: var(--blue-dark) !important; }
 
   .page { display: none; }
   .page.visible { display: block; }
 
-  #hero {
-    min-height: 100vh; width: 100%;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    text-align: center; padding: 80px 5vw 60px; background: var(--paper); position: relative; overflow: hidden;
-  }
+  /* HERO */
+  #hero { min-height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px 5vw 60px; background: var(--paper); position: relative; overflow: hidden; }
 
-  .hero-bg {
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(ellipse 60% 40% at 20% 30%, #e8f0fe 0%, transparent 70%),
-                radial-gradient(ellipse 40% 30% at 80% 70%, #e6f4ea 0%, transparent 70%);
-    z-index: 0;
-  }
+  .hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse 60% 40% at 20% 30%, #e8f0fe 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 80% 70%, #e6f4ea 0%, transparent 70%); z-index: 0; }
 
   .hero-content { position: relative; z-index: 1; width: 100%; max-width: 860px; margin: 0 auto; }
 
@@ -109,13 +93,7 @@
   .hero-stat-number { font-family: var(--display); font-size: 1.9rem; font-weight: 400; color: var(--blue); line-height: 1.1; margin-bottom: 6px; white-space: nowrap; }
   .hero-stat-label { font-size: 12px; color: var(--ink-muted); line-height: 1.4; }
 
-  .scroll-indicator {
-    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
-    color: var(--ink-faint); font-family: var(--sans); font-size: 11px; font-weight: 500;
-    letter-spacing: 0.8px; text-transform: uppercase; z-index: 1; animation: bounce 2s infinite;
-  }
-
+  .scroll-indicator { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--ink-faint); font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; z-index: 1; animation: bounce 2s infinite; }
   .scroll-arrow { width: 20px; height: 20px; border-right: 2px solid var(--ink-faint); border-bottom: 2px solid var(--ink-faint); transform: rotate(45deg); }
 
   @keyframes bounce {
@@ -123,6 +101,7 @@
     50% { transform: translateX(-50%) translateY(6px); }
   }
 
+  /* SECTIONS */
   .section-wrap { border-bottom: 1px solid var(--border); }
   .section-wrap:nth-child(odd) { background: var(--surface); }
   .section-wrap:nth-child(even) { background: var(--paper); }
@@ -134,6 +113,7 @@
 
   .section-desc { font-size: 15px; color: var(--ink-muted); max-width: 560px; margin-bottom: 40px; line-height: 1.6; }
 
+  /* ABOUT */
   .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
   .about-text p { font-size: 15px; color: var(--ink-muted); line-height: 1.8; margin-bottom: 16px; }
   .about-facts { display: flex; flex-direction: column; }
@@ -144,8 +124,90 @@
   .fact-label { color: var(--ink-faint); font-size: 11px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; min-width: 90px; flex-shrink: 0; }
   .fact-value { color: var(--ink); font-weight: 500; font-size: 13px; line-height: 1.4; }
 
-  .exp-item { background: var(--paper); border: 1.5px solid #c6d4f5; border-radius: 12px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 2px 8px rgba(26,115,232,0.07); transition: box-shadow 0.2s, border-color 0.2s; }
+  /* EXPERIENCE WITH SCROLL TIMELINE */
+  .experience-container { position: relative; padding-left: 48px; }
+
+  /* Vertical line */
+  .exp-timeline-line {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+    border-radius: 2px;
+  }
+
+  /* Filled progress overlay */
+  .exp-timeline-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 0%;
+    background: var(--blue);
+    border-radius: 2px;
+    transition: height 0.1s ease;
+  }
+
+  /* Dot on timeline for each company */
+  .exp-item {
+    position: relative;
+    background: var(--paper);
+    border: 1.5px solid #c6d4f5;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(26,115,232,0.07);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
   .exp-item:hover { box-shadow: 0 6px 20px rgba(26,115,232,0.13); border-color: var(--blue); }
+
+  /* Timeline dot - sits to the left of each card */
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -42px;
+    top: 28px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--border);
+    transition: background 0.3s, box-shadow 0.3s;
+    z-index: 2;
+  }
+
+  .exp-item.active::before {
+    background: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-light), 0 0 0 5px var(--blue-mid);
+  }
+
+  .exp-item.active {
+    border-color: var(--blue);
+    box-shadow: 0 6px 24px rgba(26,115,232,0.15);
+  }
+
+  /* Company label floating on timeline */
+  .exp-timeline-label {
+    position: absolute;
+    left: -44px;
+    top: 46px;
+    transform: translateX(-100%);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    letter-spacing: 0.5px;
+    text-align: right;
+    white-space: nowrap;
+    transition: color 0.3s;
+    display: none;
+  }
+
+  .exp-item.active .exp-timeline-label { color: var(--blue); }
 
   .exp-header { display: flex; align-items: flex-start; gap: 16px; padding: 24px 24px 20px; border-bottom: 1px solid var(--border); background: var(--surface); }
 
@@ -172,6 +234,7 @@
   .perspective.learnt .perspective-dot { background: var(--yellow); }
   .perspective p { font-size: 13px; line-height: 1.7; color: var(--ink-muted); }
 
+  /* SKILLS */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
   .skill-group { background: var(--paper); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
   .skill-group-header { padding: 12px 16px; font-family: var(--sans); font-size: 12px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--border); background: var(--surface); }
@@ -180,7 +243,6 @@
 
   /* BENTO GRID */
   .projects-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
   .bento-card { border-radius: 16px; overflow: hidden; position: relative; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
   .bento-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
   .bento-card.wide { grid-column: span 2; flex-direction: row; align-items: flex-end; justify-content: space-between; min-height: 200px; }
@@ -190,13 +252,12 @@
   .bento-tag { display: inline-flex; align-items: center; font-family: var(--sans); font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 100px; margin-bottom: 10px; }
   .bento-title { font-family: var(--display); font-size: 1.3rem; font-weight: 400; line-height: 1.25; margin-bottom: 10px; }
   .bento-desc { font-size: 13px; line-height: 1.6; }
-
   .bento-btn { display: inline-flex; align-items: center; gap: 6px; font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 8px 18px; border-radius: 100px; border: none; cursor: pointer; margin-top: 16px; text-decoration: none; transition: opacity 0.15s; }
   .bento-btn:hover { opacity: 0.85; }
 
   .card-red { background: #fce8e6; }
   .card-red .bento-tag { background: #f5c6c2; color: #c5221f; }
-  .card-red .bento-title { color: #202124; }
+  .card-red .bento-title,.card-red .bento-desc { color: #202124; }
   .card-red .bento-desc { color: #5f6368; }
   .card-red .bento-btn { background: #d93025; color: white; }
 
@@ -261,6 +322,8 @@
     .projects-bento { grid-template-columns: 1fr; }
     .bento-card.wide { grid-column: span 1; flex-direction: column; align-items: flex-start; }
     .bento-card.wide .bento-card-content { max-width: 100%; }
+    .experience-container { padding-left: 32px; }
+    .exp-item::before { left: -28px; }
   }
 
   @media (max-width: 680px) {
@@ -274,23 +337,22 @@
 <body>
 
 <nav>
-  <div class="nav-left" onclick="showPage('home')">
+  <div class="nav-left" onclick="scrollToSection('#hero')">
     <div class="nav-logo">AM</div>
     <span class="nav-title">Aananthan <span>M.</span></span>
   </div>
   <ul class="nav-links">
-    <li><a onclick="showPage('home'); scrollTo('#about')">About</a></li>
-    <li><a onclick="showPage('home'); scrollTo('#experience')">Experience</a></li>
-    <li><a onclick="showPage('home'); scrollTo('#skills')">Skills</a></li>
-    <li><a onclick="showPage('home'); scrollTo('#projects-home')">Projects</a></li>
+    <li><a onclick="scrollToSection('#about')">About</a></li>
+    <li><a onclick="scrollToSection('#experience')">Experience</a></li>
+    <li><a onclick="scrollToSection('#skills')">Skills</a></li>
+    <li><a onclick="scrollToSection('#projects-home')">Projects</a></li>
     <li><a href="mailto:maanantmr@gmail.com" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
-
-<!-- HOME PAGE -->
 <div id="page-home" class="page visible">
 
+  <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
@@ -307,7 +369,7 @@
       </p>
       <div class="hero-actions">
         <a href="mailto:maanantmr@gmail.com" class="btn-primary">Get in touch</a>
-        <a onclick="showPage('home'); scrollTo('#experience')" class="btn-secondary">View experience</a>
+        <a onclick="scrollToSection('#experience')" class="btn-secondary">View experience</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
@@ -387,146 +449,157 @@
       <h2>Where I've worked</h2>
       <p class="section-desc">Each role below shows what I did, what I can bring to your team, and where I grew as an engineer.</p>
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-logo" style="background:#fff8f0;color:#ff9900;border-color:#ffd699;">AMZ</div>
-          <div class="exp-header-text">
-            <div class="exp-role">Sr. Engineer - Mechanical & Industrial</div>
-            <div class="exp-company">Amazon LLC - Fulfillment & Distribution</div>
-            <div class="exp-meta"><span>Feb 2025 - Mar 2026</span><span>Redmond, WA</span><span>Impacted by Jan 2026 restructuring</span></div>
-            <div class="exp-highlights">
-              <span class="exp-highlight">$100M+ CapEx</span><span class="exp-highlight">20% OEE gain</span><span class="exp-highlight">12 sites</span><span class="exp-highlight">AI/Python tools</span><span class="exp-highlight">Flexsim simulation</span>
+      <div class="experience-container">
+        <div class="exp-timeline-line">
+          <div class="exp-timeline-progress" id="timelineProgress"></div>
+        </div>
+
+        <!-- AMAZON -->
+        <div class="exp-item" data-company="Amazon">
+          <div class="exp-header">
+            <div class="exp-logo" style="background:#fff8f0;color:#ff9900;border-color:#ffd699;">AMZ</div>
+            <div class="exp-header-text">
+              <div class="exp-role">Sr. Engineer - Mechanical & Industrial</div>
+              <div class="exp-company">Amazon LLC - Fulfillment & Distribution</div>
+              <div class="exp-meta"><span>Feb 2025 - Mar 2026</span><span>Redmond, WA</span><span>Impacted by Jan 2026 restructuring</span></div>
+              <div class="exp-highlights">
+                <span class="exp-highlight">$100M+ CapEx</span><span class="exp-highlight">20% OEE gain</span><span class="exp-highlight">12 sites</span><span class="exp-highlight">AI/Python tools</span><span class="exp-highlight">Flexsim simulation</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-perspectives">
+            <div class="perspective did">
+              <div class="perspective-label"><span class="perspective-dot"></span>What I did here</div>
+              <p>I owned a $100M+ CapEx program where I took the system design from concept sketches all the way to production handoff - integrating robotics, conveyors, AMR/ASRS, and MES. I cut critical zone downtime from 18% to 2% working with 11 cross-functional teams, delivering $1.4M in labor savings. I also built an AI battery optimization tool saving $360K/week and a Python supply chain model improving planning accuracy by 15%.</p>
+            </div>
+            <div class="perspective contribute">
+              <div class="perspective-label"><span class="perspective-dot"></span>What I can bring to your team</div>
+              <p>This role aligns directly with Manufacturing Engineering and Industrial Engineering specializations - I can jump into CapEx program planning, facility layout, and automation integration from day one. I also pack a Technical Program Manager and Project Engineer skillset from coordinating across 11+ teams, owning vendor RFQs, and translating complex engineering data into decisions leadership can act on.</p>
+            </div>
+            <div class="perspective learnt">
+              <div class="perspective-label"><span class="perspective-dot"></span>Where I grew as an engineer</div>
+              <p>Amazon was the first time I operated at true enterprise scale - 12 sites, $100M+ budget, real downstream consequences with every decision. I grew significantly in systems thinking and moved from "engineer who uses data" to "engineer who builds data infrastructure" through the AI planning tool work.</p>
             </div>
           </div>
         </div>
-        <div class="exp-perspectives">
-          <div class="perspective did">
-            <div class="perspective-label"><span class="perspective-dot"></span>What I did here</div>
-            <p>I owned a $100M+ CapEx program where I took the system design from concept sketches all the way to production handoff - integrating robotics, conveyors, AMR/ASRS, and MES. I cut critical zone downtime from 18% to 2% working with 11 cross-functional teams, delivering $1.4M in labor savings. I also built an AI battery optimization tool saving $360K/week and a Python supply chain model improving planning accuracy by 15%.</p>
-          </div>
-          <div class="perspective contribute">
-            <div class="perspective-label"><span class="perspective-dot"></span>What I can bring to your team</div>
-            <p>This role aligns directly with Manufacturing Engineering and Industrial Engineering specializations - I can jump into CapEx program planning, facility layout, and automation integration from day one. I also pack a Technical Program Manager and Project Engineer skillset from coordinating across 11+ teams, owning vendor RFQs, and translating complex engineering data into decisions leadership can act on.</p>
-          </div>
-          <div class="perspective learnt">
-            <div class="perspective-label"><span class="perspective-dot"></span>Where I grew as an engineer</div>
-            <p>Amazon was the first time I operated at true enterprise scale - 12 sites, $100M+ budget, real downstream consequences with every decision. I grew significantly in systems thinking and moved from "engineer who uses data" to "engineer who builds data infrastructure" through the AI planning tool work.</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-logo" style="background:#f0f7ff;color:#0066cc;border-color:#99ccff;">ETI</div>
-          <div class="exp-header-text">
-            <div class="exp-role">Mechanical Engineer II - NPI, Design, Manufacturing</div>
-            <div class="exp-company">Elan Technologies, Inc.</div>
-            <div class="exp-meta"><span>Nov 2023 - Jan 2025</span><span>Medical Device NPI</span></div>
-            <div class="exp-highlights">
-              <span class="exp-highlight">NPI end-to-end</span><span class="exp-highlight">20% defect reduction</span><span class="exp-highlight">IQ/OQ/PQ</span><span class="exp-highlight">DFM/DFA</span>
+        <!-- ELAN -->
+        <div class="exp-item" data-company="Elan">
+          <div class="exp-header">
+            <div class="exp-logo" style="background:#f0f7ff;color:#0066cc;border-color:#99ccff;">ETI</div>
+            <div class="exp-header-text">
+              <div class="exp-role">Mechanical Engineer II - NPI, Design, Manufacturing</div>
+              <div class="exp-company">Elan Technologies, Inc.</div>
+              <div class="exp-meta"><span>Nov 2023 - Jan 2025</span><span>Medical Device NPI</span></div>
+              <div class="exp-highlights">
+                <span class="exp-highlight">NPI end-to-end</span><span class="exp-highlight">20% defect reduction</span><span class="exp-highlight">IQ/OQ/PQ</span><span class="exp-highlight">DFM/DFA</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-perspectives">
+            <div class="perspective did">
+              <div class="perspective-label"><span class="perspective-dot"></span>What I did here</div>
+              <p>I ran a $350K hardware NPI program from the first design sketch in SolidWorks through 3D-print prototyping, raw material selection, system integration, and final IQ/OQ/PQ qualification. I designed the fixtures and jigs for a semi-automated assembly line and used pFMEA, DOE, and SPC analysis to cut defects by 20% and lift OEE by 5%.</p>
+            </div>
+            <div class="perspective contribute">
+              <div class="perspective-label"><span class="perspective-dot"></span>What I can bring to your team</div>
+              <p>This maps closely to Mechanical Design Engineering and Process Engineering roles - I know the full NPI lifecycle end to end, including the documentation and validation work that regulated environments require. I also bring a Project Engineer mindset from owning BOM costing, value stream analysis, and stakeholder coordination across the full program.</p>
+            </div>
+            <div class="perspective learnt">
+              <div class="perspective-label"><span class="perspective-dot"></span>Where I grew as an engineer</div>
+              <p>Elan sharpened my DFM instincts considerably. Working in a medical device context meant every tolerance and fixture decision had to be documented and defensible. I learned to pressure-test assumptions during design review before cutting metal - a discipline now core to how I approach any new design problem.</p>
             </div>
           </div>
         </div>
-        <div class="exp-perspectives">
-          <div class="perspective did">
-            <div class="perspective-label"><span class="perspective-dot"></span>What I did here</div>
-            <p>I ran a $350K hardware NPI program from the first design sketch in SolidWorks through 3D-print prototyping, raw material selection, system integration, and final IQ/OQ/PQ qualification. I designed the fixtures and jigs for a semi-automated assembly line and used pFMEA, DOE, and SPC analysis to cut defects by 20% and lift OEE by 5%.</p>
-          </div>
-          <div class="perspective contribute">
-            <div class="perspective-label"><span class="perspective-dot"></span>What I can bring to your team</div>
-            <p>This maps closely to Mechanical Design Engineering and Process Engineering roles - I know the full NPI lifecycle end to end, including the documentation and validation work that regulated environments require. I also bring a Project Engineer mindset from owning BOM costing, value stream analysis, and stakeholder coordination across the full program.</p>
-          </div>
-          <div class="perspective learnt">
-            <div class="perspective-label"><span class="perspective-dot"></span>Where I grew as an engineer</div>
-            <p>Elan sharpened my DFM instincts considerably. Working in a medical device context meant every tolerance and fixture decision had to be documented and defensible. I learned to pressure-test assumptions during design review before cutting metal - a discipline now core to how I approach any new design problem.</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-logo" style="background:#f0faf5;color:#00875a;border-color:#99ddc0;">VZG</div>
-          <div class="exp-header-text">
-            <div class="exp-role">Manufacturing Engineer - Process, Design, Automation</div>
-            <div class="exp-company">Vizgen, Inc. - Genomics Startup</div>
-            <div class="exp-meta"><span>Apr 2023 - Oct 2023</span><span>Impacted by Oct 2023 startup budget cut</span></div>
-            <div class="exp-highlights">
-              <span class="exp-highlight">0-1 production ramp</span><span class="exp-highlight">Power BI / SQL</span><span class="exp-highlight">APQP / PPAP</span><span class="exp-highlight">20 machines</span>
+        <!-- VIZGEN -->
+        <div class="exp-item" data-company="Vizgen">
+          <div class="exp-header">
+            <div class="exp-logo" style="background:#f0faf5;color:#00875a;border-color:#99ddc0;">VZG</div>
+            <div class="exp-header-text">
+              <div class="exp-role">Manufacturing Engineer - Process, Design, Automation</div>
+              <div class="exp-company">Vizgen, Inc. - Genomics Startup</div>
+              <div class="exp-meta"><span>Apr 2023 - Oct 2023</span><span>Impacted by Oct 2023 startup budget cut</span></div>
+              <div class="exp-highlights">
+                <span class="exp-highlight">0-1 production ramp</span><span class="exp-highlight">Power BI / SQL</span><span class="exp-highlight">APQP / PPAP</span><span class="exp-highlight">20 machines</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-perspectives">
+            <div class="perspective did">
+              <div class="perspective-label"><span class="perspective-dot"></span>What I did here</div>
+              <p>I built a production line from zero - procured and validated equipment, trained robotic arms, set up Power BI/SQL dashboards, and established a preventive maintenance program across 20 machines that cut failure rate by 5%. I also led supplier qualification, APQP, and PPAP and ran DOE and DFx validation studies that delivered 10% CapEx savings.</p>
+            </div>
+            <div class="perspective contribute">
+              <div class="perspective-label"><span class="perspective-dot"></span>What I can bring to your team</div>
+              <p>This experience fits Manufacturing Engineering and Industrial Engineering roles where the line doesn't exist yet or needs rebuilding. I can write the SOPs, select the equipment, and make pragmatic calls when there's no playbook. I also bring a Project Engineer approach from managing supplier timelines and R&D partnerships simultaneously.</p>
+            </div>
+            <div class="perspective learnt">
+              <div class="perspective-label"><span class="perspective-dot"></span>Where I grew as an engineer</div>
+              <p>Vizgen taught me how to operate when there's no roadmap. At a startup, you write the processes while executing them. That gave me a much stronger appreciation for documentation and repeatability - building things that don't depend on one person's knowledge to keep running.</p>
             </div>
           </div>
         </div>
-        <div class="exp-perspectives">
-          <div class="perspective did">
-            <div class="perspective-label"><span class="perspective-dot"></span>What I did here</div>
-            <p>I built a production line from zero - procured and validated equipment, trained robotic arms, set up Power BI/SQL dashboards, and established a preventive maintenance program across 20 machines that cut failure rate by 5%. I also led supplier qualification, APQP, and PPAP and ran DOE and DFx validation studies that delivered 10% CapEx savings.</p>
-          </div>
-          <div class="perspective contribute">
-            <div class="perspective-label"><span class="perspective-dot"></span>What I can bring to your team</div>
-            <p>This experience fits Manufacturing Engineering and Industrial Engineering roles where the line doesn't exist yet or needs rebuilding. I can write the SOPs, select the equipment, and make pragmatic calls when there's no playbook. I also bring a Project Engineer approach from managing supplier timelines and R&D partnerships simultaneously.</p>
-          </div>
-          <div class="perspective learnt">
-            <div class="perspective-label"><span class="perspective-dot"></span>Where I grew as an engineer</div>
-            <p>Vizgen taught me how to operate when there's no roadmap. At a startup, you write the processes while executing them. That gave me a much stronger appreciation for documentation and repeatability - building things that don't depend on one person's knowledge to keep running.</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-logo" style="background:#fff5f5;color:#cc0000;border-color:#ffaaaa;">INS</div>
-          <div class="exp-header-text">
-            <div class="exp-role">Manufacturing Engineer Intern - Automation, Design</div>
-            <div class="exp-company">Insulet Corporation</div>
-            <div class="exp-meta"><span>Jan 2022 - Mar 2022</span><span class="exp-intern-badge">Internship</span></div>
-            <div class="exp-highlights">
-              <span class="exp-highlight">Reverse engineering</span><span class="exp-highlight">10% capacity gain</span><span class="exp-highlight">2,500 daily rejects eliminated</span><span class="exp-highlight">SolidWorks / Creo</span>
+        <!-- INSULET -->
+        <div class="exp-item" data-company="Insulet">
+          <div class="exp-header">
+            <div class="exp-logo" style="background:#fff5f5;color:#cc0000;border-color:#ffaaaa;">INS</div>
+            <div class="exp-header-text">
+              <div class="exp-role">Manufacturing Engineer Intern - Automation, Design</div>
+              <div class="exp-company">Insulet Corporation</div>
+              <div class="exp-meta"><span>Jan 2022 - Mar 2022</span><span class="exp-intern-badge">Internship</span></div>
+              <div class="exp-highlights">
+                <span class="exp-highlight">Reverse engineering</span><span class="exp-highlight">10% capacity gain</span><span class="exp-highlight">2,500 daily rejects eliminated</span><span class="exp-highlight">SolidWorks / Creo</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-perspectives">
+            <div class="perspective did">
+              <div class="perspective-label"><span class="perspective-dot"></span>What I did here</div>
+              <p>I worked with the team on reverse-engineering product failures - running lean test cycles, analysing designs in SolidWorks and Creo, and digging into BOM data in NetSuite ERP. The work resulted in a 10% increase in production capacity and standardized SOPs that prevented 2,500 daily rejects through operator training.</p>
+            </div>
+            <div class="perspective contribute">
+              <div class="perspective-label"><span class="perspective-dot"></span>What I can bring to your team</div>
+              <p>Even as an internship, this reflects the Mechanical Design and Process Engineering instincts I've carried forward - root cause thinking, design analysis, and fixing problems at the source. The SOP and training work feeds directly into a Project Engineer or Industrial Engineer role where standardization and scalability matter.</p>
+            </div>
+            <div class="perspective learnt">
+              <div class="perspective-label"><span class="perspective-dot"></span>Where I grew as an engineer</div>
+              <p>Insulet was my first exposure to a regulated medical device manufacturing environment. I learned that every process change has a paper trail and every decision needs justification - a mindset that made me a much more careful and thorough engineer by the time I moved into full-time roles.</p>
             </div>
           </div>
         </div>
-        <div class="exp-perspectives">
-          <div class="perspective did">
-            <div class="perspective-label"><span class="perspective-dot"></span>What I did here</div>
-            <p>I worked with the team on reverse-engineering product failures - running lean test cycles, analysing designs in SolidWorks and Creo, and digging into BOM data in NetSuite ERP. The work resulted in a 10% increase in production capacity and standardized SOPs that prevented 2,500 daily rejects through operator training.</p>
-          </div>
-          <div class="perspective contribute">
-            <div class="perspective-label"><span class="perspective-dot"></span>What I can bring to your team</div>
-            <p>Even as an internship, this reflects the Mechanical Design and Process Engineering instincts I've carried forward - root cause thinking, design analysis, and fixing problems at the source. The SOP and training work feeds directly into a Project Engineer or Industrial Engineer role where standardization and scalability matter.</p>
-          </div>
-          <div class="perspective learnt">
-            <div class="perspective-label"><span class="perspective-dot"></span>Where I grew as an engineer</div>
-            <p>Insulet was my first exposure to a regulated medical device manufacturing environment. I learned that every process change has a paper trail and every decision needs justification - a mindset that made me a much more careful and thorough engineer by the time I moved into full-time roles.</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-logo" style="background:#f5f0ff;color:#6600cc;border-color:#cc99ff;">FLX</div>
-          <div class="exp-header-text">
-            <div class="exp-role">Mechanical Engineer - Process, Design, Automation</div>
-            <div class="exp-company">Flex Ltd.</div>
-            <div class="exp-meta"><span>Jan 2019 - Dec 2020</span></div>
-            <div class="exp-highlights">
-              <span class="exp-highlight">NPI / supply chain</span><span class="exp-highlight">22% waste reduction</span><span class="exp-highlight">FEA / CAD</span><span class="exp-highlight">$200K program</span>
+        <!-- FLEX -->
+        <div class="exp-item" data-company="Flex">
+          <div class="exp-header">
+            <div class="exp-logo" style="background:#f5f0ff;color:#6600cc;border-color:#cc99ff;">FLX</div>
+            <div class="exp-header-text">
+              <div class="exp-role">Mechanical Engineer - Process, Design, Automation</div>
+              <div class="exp-company">Flex Ltd.</div>
+              <div class="exp-meta"><span>Jan 2019 - Dec 2020</span></div>
+              <div class="exp-highlights">
+                <span class="exp-highlight">NPI / supply chain</span><span class="exp-highlight">22% waste reduction</span><span class="exp-highlight">FEA / CAD</span><span class="exp-highlight">$200K program</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-perspectives">
+            <div class="perspective did">
+              <div class="perspective-label"><span class="perspective-dot"></span>What I did here</div>
+              <p>I managed a full NPI cycle covering 2D/CAD design, FEA, prototyping, testing, RFQ, and procurement. I led a $200K project using JIRA, Gantt scheduling, and VSM that cut production waste costs by 22%. This was my foundation - where I built core habits around structured project execution and cross-functional coordination.</p>
+            </div>
+            <div class="perspective contribute">
+              <div class="perspective-label"><span class="perspective-dot"></span>What I can bring to your team</div>
+              <p>Flex gave me a solid NPI foundation that applies directly to Mechanical Design, Process, and Project Engineering roles. I understand the full product development cycle - not just the design phase - and I know how procurement, supplier timelines, and qualification activities interact with engineering decisions.</p>
+            </div>
+            <div class="perspective learnt">
+              <div class="perspective-label"><span class="perspective-dot"></span>Where I grew as an engineer</div>
+              <p>Flex is where I learned that good engineering and good project management are inseparable. A technically sound design that misses its timeline or blows its budget is not a success. Working with JIRA and cross-functional teams early gave me a structured approach that I've carried into every role since.</p>
             </div>
           </div>
         </div>
-        <div class="exp-perspectives">
-          <div class="perspective did">
-            <div class="perspective-label"><span class="perspective-dot"></span>What I did here</div>
-            <p>I managed a full NPI cycle covering 2D/CAD design, FEA, prototyping, testing, RFQ, and procurement. I led a $200K project using JIRA, Gantt scheduling, and VSM that cut production waste costs by 22%. This was my foundation - where I built core habits around structured project execution and cross-functional coordination.</p>
-          </div>
-          <div class="perspective contribute">
-            <div class="perspective-label"><span class="perspective-dot"></span>What I can bring to your team</div>
-            <p>Flex gave me a solid NPI foundation that applies directly to Mechanical Design, Process, and Project Engineering roles. I understand the full product development cycle - not just the design phase - and I know how procurement, supplier timelines, and qualification activities interact with engineering decisions.</p>
-          </div>
-          <div class="perspective learnt">
-            <div class="perspective-label"><span class="perspective-dot"></span>Where I grew as an engineer</div>
-            <p>Flex is where I learned that good engineering and good project management are inseparable. A technically sound design that misses its timeline or blows its budget is not a success. Working with JIRA and cross-functional teams early gave me a structured approach that I've carried into every role since.</p>
-          </div>
-        </div>
-      </div>
 
+      </div><!-- end experience-container -->
     </div>
   </div>
 
@@ -613,7 +686,7 @@
           <div class="bento-card-content">
             <div class="bento-tag">Elan Technologies - 2023/2024</div>
             <div class="bento-title">$350K NPI Program - Medical Device Assembly</div>
-            <div class="bento-desc">Full NPI lifecycle from SolidWorks design through IQ/OQ/PQ qualification. DFM/DFA jigs and fixtures for a semi-automated assembly line. Cut defects 20% and improved OEE 5%.</div>
+            <div class="bento-desc">Full NPI lifecycle from SolidWorks design through IQ/OQ/PQ qualification. DFM/DFA jigs and fixtures for semi-automated assembly. Cut defects 20% and improved OEE 5%.</div>
             <a class="bento-btn">View details &rarr;</a>
           </div>
         </div>
@@ -627,7 +700,7 @@
           </div>
         </div>
 
-        <!-- PDF PORTFOLIO CARDS - live links to GitHub-hosted PDFs -->
+        <!-- PDF PORTFOLIO CARDS -->
         <div class="bento-card card-navy">
           <div class="bento-card-content">
             <div class="bento-tag">📐 Design Portfolio</div>
@@ -688,21 +761,69 @@
     <span style="color: var(--blue);">Built using AI vibe coding</span>
   </footer>
 
-</div>
+</div><!-- end page-home -->
 
 <script>
-  function showPage(name) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
-    document.getElementById('page-' + name).classList.add('visible');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Fixed scroll function - renamed to avoid conflict with window.scrollTo
+  function scrollToSection(id) {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 
-  function scrollTo(id) {
-    setTimeout(() => {
-      const el = document.querySelector(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
+  // Timeline scroll tracker
+  const expItems = document.querySelectorAll('.exp-item');
+  const timelineProgress = document.getElementById('timelineProgress');
+  const container = document.querySelector('.experience-container');
+
+  function updateTimeline() {
+    if (!container || expItems.length === 0) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const containerTop = containerRect.top;
+    const containerHeight = containerRect.height;
+    const viewportMid = window.innerHeight * 0.45;
+
+    // Progress line fill
+    const scrolled = viewportMid - containerTop;
+    const pct = Math.min(100, Math.max(0, (scrolled / containerHeight) * 100));
+    timelineProgress.style.height = pct + '%';
+
+    // Highlight active card
+    let activeSet = false;
+    expItems.forEach((item) => {
+      const rect = item.getBoundingClientRect();
+      const itemMid = rect.top + rect.height / 2;
+      if (!activeSet && itemMid >= viewportMid - 100 && itemMid <= viewportMid + rect.height) {
+        item.classList.add('active');
+        activeSet = true;
+      } else if (!activeSet && rect.top < viewportMid && rect.bottom > viewportMid) {
+        item.classList.add('active');
+        activeSet = true;
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // If nothing matched, activate the one closest to viewport center
+    if (!activeSet) {
+      let closest = null;
+      let closestDist = Infinity;
+      expItems.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        const dist = Math.abs(rect.top + rect.height / 2 - viewportMid);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closest = item;
+        }
+      });
+      if (closest && closestDist < window.innerHeight) {
+        closest.classList.add('active');
+      }
+    }
   }
+
+  window.addEventListener('scroll', updateTimeline, { passive: true });
+  updateTimeline();
 </script>
 </body>
 </html>
