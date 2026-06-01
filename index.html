@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +30,6 @@
   }
 
   html { scroll-behavior: smooth; }
-
   body { font-family: var(--body); background: var(--surface); color: var(--ink); font-size: 14px; line-height: 1.6; }
 
   nav {
@@ -48,7 +48,6 @@
 
   .nav-title { font-family: var(--sans); font-size: 18px; font-weight: 400; color: var(--ink); }
   .nav-title span { color: var(--blue); font-weight: 500; }
-
   .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
 
   .nav-links a {
@@ -59,9 +58,8 @@
 
   .nav-links a:hover { background: var(--surface); color: var(--blue); }
   .nav-links a.active { color: var(--blue); background: var(--blue-light); }
-
   .nav-cta { background: var(--blue) !important; color: white !important; border-radius: 4px !important; padding: 8px 16px !important; font-weight: 500 !important; }
-  .nav-cta:hover { background: var(--blue-dark) !important; color: white !important; }
+  .nav-cta:hover { background: var(--blue-dark) !important; }
 
   .page { display: none; }
   .page.visible { display: block; }
@@ -69,8 +67,7 @@
   #hero {
     min-height: 100vh; width: 100%;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
-    text-align: center; padding: 80px 5vw 60px;
-    background: var(--paper); position: relative; overflow: hidden;
+    text-align: center; padding: 80px 5vw 60px; background: var(--paper); position: relative; overflow: hidden;
   }
 
   .hero-bg {
@@ -84,12 +81,7 @@
 
   .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 28px; }
 
-  .hero-chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: var(--sans); font-size: 12px; font-weight: 500;
-    padding: 6px 14px; border-radius: 100px; line-height: 1.5;
-  }
-
+  .hero-chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--sans); font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 100px; line-height: 1.5; }
   .chip-blue { background: var(--blue-light); color: var(--blue); border: 1px solid var(--blue-mid); }
   .chip-green { background: #e6f4ea; color: #188038; border: 1px solid #ceead6; }
   .chip-amber { background: #fef7e0; color: #c77b00; border: 1px solid #fde293; }
@@ -98,40 +90,20 @@
   .chip-green .chip-dot { background: #188038; }
   .chip-amber .chip-dot { background: #f29900; }
 
-  h1 {
-    font-family: var(--display); font-size: clamp(2.4rem, 6vw, 4.2rem);
-    font-weight: 400; line-height: 1.1; letter-spacing: -0.5px; color: var(--ink); margin-bottom: 20px;
-  }
-
+  h1 { font-family: var(--display); font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.5px; color: var(--ink); margin-bottom: 20px; }
   h1 span { color: var(--blue); }
 
   .hero-sub { font-size: 17px; font-weight: 300; color: var(--ink-muted); line-height: 1.75; max-width: 680px; margin: 0 auto 36px; }
 
   .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
-  .btn-primary {
-    display: inline-flex; align-items: center; background: var(--blue); color: white;
-    font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 10px 24px;
-    border-radius: 4px; text-decoration: none; cursor: pointer; border: none;
-    transition: background 0.15s; box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-  }
-
+  .btn-primary { display: inline-flex; align-items: center; background: var(--blue); color: white; font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 10px 24px; border-radius: 4px; text-decoration: none; cursor: pointer; border: none; transition: background 0.15s; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
   .btn-primary:hover { background: var(--blue-dark); }
 
-  .btn-secondary {
-    display: inline-flex; align-items: center; background: var(--paper); color: var(--blue);
-    font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 10px 24px;
-    border-radius: 4px; text-decoration: none; cursor: pointer; border: 1px solid var(--border);
-    transition: background 0.15s, border-color 0.15s;
-  }
-
+  .btn-secondary { display: inline-flex; align-items: center; background: var(--paper); color: var(--blue); font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 10px 24px; border-radius: 4px; text-decoration: none; cursor: pointer; border: 1px solid var(--border); transition: background 0.15s, border-color 0.15s; }
   .btn-secondary:hover { background: var(--blue-light); border-color: var(--blue); }
 
-  .hero-stats {
-    display: flex; justify-content: center; margin-top: 56px;
-    border-top: 1px solid var(--border); padding-top: 40px; flex-wrap: wrap; width: 100%;
-  }
-
+  .hero-stats { display: flex; justify-content: center; margin-top: 56px; border-top: 1px solid var(--border); padding-top: 40px; flex-wrap: wrap; width: 100%; }
   .hero-stat { padding: 0 32px; border-right: 1px solid var(--border); text-align: center; flex: 1; min-width: 140px; }
   .hero-stat:last-child { border-right: none; }
   .hero-stat-number { font-family: var(--display); font-size: 1.9rem; font-weight: 400; color: var(--blue); line-height: 1.1; margin-bottom: 6px; white-space: nowrap; }
@@ -172,12 +144,7 @@
   .fact-label { color: var(--ink-faint); font-size: 11px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; min-width: 90px; flex-shrink: 0; }
   .fact-value { color: var(--ink); font-weight: 500; font-size: 13px; line-height: 1.4; }
 
-  .exp-item {
-    background: var(--paper); border: 1.5px solid #c6d4f5; border-radius: 12px;
-    margin-bottom: 20px; overflow: hidden; box-shadow: 0 2px 8px rgba(26,115,232,0.07);
-    transition: box-shadow 0.2s, border-color 0.2s;
-  }
-
+  .exp-item { background: var(--paper); border: 1.5px solid #c6d4f5; border-radius: 12px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 2px 8px rgba(26,115,232,0.07); transition: box-shadow 0.2s, border-color 0.2s; }
   .exp-item:hover { box-shadow: 0 6px 20px rgba(26,115,232,0.13); border-color: var(--blue); }
 
   .exp-header { display: flex; align-items: flex-start; gap: 16px; padding: 24px 24px 20px; border-bottom: 1px solid var(--border); background: var(--surface); }
@@ -214,12 +181,7 @@
   /* BENTO GRID */
   .projects-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-  .bento-card {
-    border-radius: 16px; overflow: hidden; position: relative; min-height: 220px;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 28px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
-  }
-
+  .bento-card { border-radius: 16px; overflow: hidden; position: relative; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
   .bento-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
   .bento-card.wide { grid-column: span 2; flex-direction: row; align-items: flex-end; justify-content: space-between; min-height: 200px; }
   .bento-card-content { position: relative; z-index: 1; }
@@ -274,6 +236,12 @@
   .card-navy .bento-desc { color: #5f6368; }
   .card-navy .bento-btn { background: #283593; color: white; }
 
+  .card-charcoal { background: #eceff1; }
+  .card-charcoal .bento-tag { background: #cfd8dc; color: #263238; }
+  .card-charcoal .bento-title { color: #202124; }
+  .card-charcoal .bento-desc { color: #5f6368; }
+  .card-charcoal .bento-btn { background: #37474f; color: white; }
+
   /* CONTACT */
   .contact-wrap { max-width: 760px; margin: 0 auto; text-align: center; }
   .contact-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
@@ -282,36 +250,6 @@
   .contact-card-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 18px; }
   .contact-card-label { font-family: var(--sans); font-size: 11px; font-weight: 500; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
   .contact-card-value { font-size: 12px; font-weight: 500; color: var(--blue); word-break: break-all; }
-
-  /* PROJECTS PAGE */
-  #page-projects { padding-top: 64px; min-height: 100vh; background: var(--surface); }
-  .projects-hero { background: var(--paper); border-bottom: 1px solid var(--border); padding: 48px 5vw 40px; text-align: center; }
-  .projects-hero h2 { margin-bottom: 8px; }
-  .projects-hero p { font-size: 15px; color: var(--ink-muted); max-width: 480px; margin: 0 auto; }
-
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; padding: 32px 5vw; max-width: 1200px; margin: 0 auto; }
-
-  .project-card { background: var(--paper); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: box-shadow 0.2s, border-color 0.2s; display: flex; flex-direction: column; }
-  .project-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: #c6d4f5; }
-  .project-card-top { background: var(--blue-light); padding: 20px 20px 16px; border-bottom: 1px solid var(--blue-mid); }
-  .project-number { font-family: var(--sans); font-size: 11px; font-weight: 500; color: var(--blue); letter-spacing: 1px; }
-  .project-title { font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.3; margin-top: 6px; }
-  .project-body { padding: 16px 20px; flex: 1; }
-  .project-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.7; margin-bottom: 14px; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .project-tag { font-size: 11px; font-weight: 500; color: var(--blue); background: var(--blue-light); border-radius: 4px; padding: 3px 8px; border: 1px solid var(--blue-mid); font-family: var(--sans); }
-
-  /* PDF cards in projects page */
-  .pdf-card { background: var(--paper); border: 1.5px solid var(--blue-mid); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(26,115,232,0.1); display: flex; flex-direction: column; transition: box-shadow 0.2s, border-color 0.2s; }
-  .pdf-card:hover { box-shadow: 0 4px 12px rgba(26,115,232,0.2); border-color: var(--blue); }
-  .pdf-card-top { background: var(--blue); padding: 20px 20px 16px; }
-  .pdf-card-icon { font-size: 28px; margin-bottom: 8px; }
-  .pdf-card-type { font-family: var(--sans); font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.75); letter-spacing: 1px; text-transform: uppercase; }
-  .pdf-card-title { font-family: var(--sans); font-size: 15px; font-weight: 500; color: white; line-height: 1.3; margin-top: 4px; }
-  .pdf-card-body { padding: 16px 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-  .pdf-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.7; margin-bottom: 16px; }
-  .pdf-card-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--sans); font-size: 13px; font-weight: 500; color: white; background: var(--blue); padding: 8px 16px; border-radius: 4px; text-decoration: none; transition: background 0.15s; width: fit-content; }
-  .pdf-card-link:hover { background: var(--blue-dark); }
 
   footer { padding: 24px 5vw; border-top: 1px solid var(--border); font-size: 13px; color: var(--ink-faint); display: flex; justify-content: space-between; align-items: center; background: var(--paper); }
 
@@ -328,7 +266,6 @@
   @media (max-width: 680px) {
     .nav-links a { padding: 8px 8px; font-size: 12px; }
     h1 { font-size: 2rem; }
-    .projects-grid { grid-template-columns: 1fr; }
     .contact-cards { grid-template-columns: 1fr; }
     .hero-stat { min-width: 130px; }
   }
@@ -632,7 +569,7 @@
     <div class="section-inner" id="projects-home">
       <div class="section-eyebrow">Projects</div>
       <h2>Things I've built & led</h2>
-      <p class="section-desc">A selection of programs and tools across my engineering career. Full reports and design portfolio available on request.</p>
+      <p class="section-desc">A selection of programs, tools, and portfolios across my engineering career.</p>
 
       <div class="projects-bento">
 
@@ -690,6 +627,25 @@
           </div>
         </div>
 
+        <!-- PDF PORTFOLIO CARDS - live links to GitHub-hosted PDFs -->
+        <div class="bento-card card-navy">
+          <div class="bento-card-content">
+            <div class="bento-tag">📐 Design Portfolio</div>
+            <div class="bento-title">Design Experience Portfolio</div>
+            <div class="bento-desc">Full design portfolio covering CAD, fixtures, tooling, and mechanical design work across my engineering career.</div>
+            <a href="https://aananthanm.github.io/Design%20Experience%20Portfolio_Aananthan.pdf" target="_blank" class="bento-btn">View PDF &rarr;</a>
+          </div>
+        </div>
+
+        <div class="bento-card card-charcoal">
+          <div class="bento-card-content">
+            <div class="bento-tag">⚙️ Technical Portfolio</div>
+            <div class="bento-title">Technical Engineering Portfolio</div>
+            <div class="bento-desc">Detailed technical reports covering process engineering, NPI programs, and manufacturing systems work.</div>
+            <a href="https://aananthanm.github.io/Technical%20Portfolio_Aananthan_Mariappan.pdf" target="_blank" class="bento-btn">View PDF &rarr;</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -734,127 +690,10 @@
 
 </div>
 
-
-<!-- PROJECTS PAGE -->
-<div id="page-projects" class="page">
-  <div class="projects-hero">
-    <div class="section-eyebrow">Projects</div>
-    <h2>Things I've built & led</h2>
-    <p>A selection of programs and tools from my engineering career. Full project reports and design portfolio available on request.</p>
-  </div>
-
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="project-card-top">
-        <div class="project-number">01</div>
-        <div class="project-title">$100M+ Semi-Automated Distribution Center</div>
-      </div>
-      <div class="project-body">
-        <p class="project-desc">End-to-end ownership of a major Amazon CapEx program - AutoCAD layouts, MES integration, AMR/ASRS/Fanuc robotics, SolidWorks GD&T fixtures, and Flexsim process simulation. Reduced critical zone downtime from 18% to 2% and delivered $6.4M positive cash flow by Year 3.</p>
-        <div class="project-tags"><span class="project-tag">Amazon</span><span class="project-tag">CapEx</span><span class="project-tag">Automation</span><span class="project-tag">Flexsim</span><span class="project-tag">Robotics</span><span class="project-tag">2025-2026</span></div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-card-top">
-        <div class="project-number">02</div>
-        <div class="project-title">AI-Assisted Battery Optimization Tool</div>
-      </div>
-      <div class="project-body">
-        <p class="project-desc">Built an AI-assisted Lithium-Ion battery utilization tool to reduce system flow downtime by 18%, saving an estimated $360,000 per week. Covered full cycle - design, testing, prototyping, monitoring, and vendor collaboration.</p>
-        <div class="project-tags"><span class="project-tag">Amazon</span><span class="project-tag">AI / Python</span><span class="project-tag">Electrical Systems</span><span class="project-tag">2025</span></div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-card-top">
-        <div class="project-number">03</div>
-        <div class="project-title">Python AI Supply Chain Planning Model</div>
-      </div>
-      <div class="project-body">
-        <p class="project-desc">Developed a Python-based AI model for 3-year supply chain capacity and demand planning - the first AI-assisted decision tool in Amazon's industrial workflow. Improved business decision accuracy by 15%.</p>
-        <div class="project-tags"><span class="project-tag">Amazon</span><span class="project-tag">Python</span><span class="project-tag">Supply Chain</span><span class="project-tag">AI</span><span class="project-tag">2025</span></div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-card-top">
-        <div class="project-number">04</div>
-        <div class="project-title">Ergonomic Safety CapEx - 12 Fulfillment Sites</div>
-      </div>
-      <div class="project-body">
-        <p class="project-desc">Piloted a $1.5M OSHA-compliant ergonomic systems program across 12 Amazon fulfillment centers. Achieved 11% reduction in safety incidents, 20% improvement in cycle/takt time, and $250K net cost benefit.</p>
-        <div class="project-tags"><span class="project-tag">Amazon</span><span class="project-tag">Safety / OSHA</span><span class="project-tag">Multi-site</span><span class="project-tag">2025</span></div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-card-top">
-        <div class="project-number">05</div>
-        <div class="project-title">$350K NPI Program - Medical Device Assembly</div>
-      </div>
-      <div class="project-body">
-        <p class="project-desc">Full NPI lifecycle at Elan Technologies from SolidWorks design through IQ/OQ/PQ qualification. Designed DFM/DFA jigs and fixtures for a semi-automated assembly line, reducing defects by 20% and improving OEE by 5%.</p>
-        <div class="project-tags"><span class="project-tag">Elan Technologies</span><span class="project-tag">NPI</span><span class="project-tag">SolidWorks</span><span class="project-tag">ISO 13485</span><span class="project-tag">2023-2024</span></div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-card-top">
-        <div class="project-number">06</div>
-        <div class="project-title">0-1 Production Line - Vizgen, Inc.</div>
-      </div>
-      <div class="project-body">
-        <p class="project-desc">Established a production line from scratch at a genomics startup - Power BI/SQL dashboards, NCMR/CAPA/ECO cycles, robotic arm training, and a preventive maintenance program across 20 machines that cut failure rate by 5%.</p>
-        <div class="project-tags"><span class="project-tag">Vizgen</span><span class="project-tag">0-1 Build</span><span class="project-tag">Power BI / SQL</span><span class="project-tag">Robotics</span><span class="project-tag">2023</span></div>
-      </div>
-    </div>
-
-    <!-- PDF PORTFOLIO CARDS - properly using project-card style -->
-    <!-- EDIT HERE: update href with your actual PDF filenames after uploading to GitHub -->
-    <div class="pdf-card">
-      <div class="pdf-card-top">
-        <div class="pdf-card-icon">📐</div>
-        <div class="pdf-card-type">Design Portfolio</div>
-        <div class="pdf-card-title">Design Experience Portfolio</div>
-      </div>
-      <div class="pdf-card-body">
-        <p class="pdf-card-desc">Full design portfolio covering CAD, fixtures, tooling, and mechanical design work across my engineering career.</p>
-        <a href="https://aananthanm.github.io/Design%20Experience%20Portfolio_Aananthan.pdf" target="_blank" class="pdf-card-link">
-          View PDF &rarr;
-        </a>
-      </div>
-    </div>
-
-    <div class="pdf-card">
-      <div class="pdf-card-top">
-        <div class="pdf-card-icon">⚙️</div>
-        <div class="pdf-card-type">Technical Portfolio</div>
-        <div class="pdf-card-title">Technical Engineering Portfolio</div>
-      </div>
-      <div class="pdf-card-body">
-        <p class="pdf-card-desc">Detailed technical reports covering process engineering, NPI programs, and manufacturing systems work.</p>
-        <a href="https://aananthanm.github.io/Technical%20Portfolio_Aananthan_Mariappan.pdf" target="_blank" class="pdf-card-link">
-          View PDF &rarr;
-        </a>
-      </div>
-    </div>
-
-  </div><!-- end projects-grid -->
-
-  <footer>
-    <span>© 2025 Aananthan Mariappan</span>
-    <span style="color: var(--blue);">Built using AI vibe coding</span>
-  </footer>
-
-</div><!-- end page-projects -->
-
 <script>
   function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
     document.getElementById('page-' + name).classList.add('visible');
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
