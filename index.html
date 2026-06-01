@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +42,7 @@
     line-height: 1.6;
   }
 
-  /* NAV - Google style top bar */
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -83,7 +84,6 @@
     font-size: 18px;
     font-weight: 400;
     color: var(--ink);
-    letter-spacing: 0;
   }
 
   .nav-title span { color: var(--blue); font-weight: 500; }
@@ -106,9 +106,9 @@
   .nav-links a.active { color: var(--blue); background: var(--blue-light); }
 
   .nav-cta {
-    background: var(--blue);
+    background: var(--blue) !important;
     color: white !important;
-    border-radius: 4px;
+    border-radius: 4px !important;
     padding: 8px 16px !important;
     font-weight: 500 !important;
   }
@@ -119,15 +119,16 @@
   .page { display: none; }
   .page.visible { display: block; }
 
-  /* HERO - Google product page style */
+  /* HERO */
   #hero {
     min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 80px 24px 60px;
+    padding: 80px 5vw 60px;
     background: var(--paper);
     position: relative;
     overflow: hidden;
@@ -142,7 +143,13 @@
     z-index: 0;
   }
 
-  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+  }
 
   .hero-chip {
     display: inline-flex;
@@ -153,22 +160,24 @@
     font-family: var(--sans);
     font-size: 12px;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     padding: 6px 14px;
     border-radius: 100px;
     margin-bottom: 28px;
     border: 1px solid var(--blue-mid);
+    line-height: 1.5;
   }
 
   .hero-chip-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
     background: var(--blue);
+    flex-shrink: 0;
   }
 
   h1 {
     font-family: var(--display);
-    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.5px;
@@ -179,11 +188,11 @@
   h1 span { color: var(--blue); }
 
   .hero-sub {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 300;
     color: var(--ink-muted);
-    line-height: 1.7;
-    max-width: 560px;
+    line-height: 1.75;
+    max-width: 680px;
     margin: 0 auto 36px;
   }
 
@@ -237,12 +246,15 @@
     border-top: 1px solid var(--border);
     padding-top: 40px;
     flex-wrap: wrap;
+    width: 100%;
   }
 
   .hero-stat {
     padding: 0 40px;
     border-right: 1px solid var(--border);
     text-align: center;
+    flex: 1;
+    min-width: 160px;
   }
 
   .hero-stat:last-child { border-right: none; }
@@ -253,22 +265,22 @@
     font-weight: 400;
     color: var(--blue);
     line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .hero-stat-label {
     font-size: 12px;
     color: var(--ink-muted);
     font-weight: 400;
+    line-height: 1.4;
   }
 
   /* SECTIONS */
-  section { padding: 72px 24px; max-width: 1200px; margin: 0 auto; }
-
-  .section-wrap { background: var(--paper); border-bottom: 1px solid var(--border); }
+  .section-wrap { border-bottom: 1px solid var(--border); }
   .section-wrap:nth-child(odd) { background: var(--surface); }
+  .section-wrap:nth-child(even) { background: var(--paper); }
 
-  .section-inner { max-width: 1200px; margin: 0 auto; padding: 72px 24px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; padding: 72px 5vw; }
 
   .section-eyebrow {
     font-family: var(--sans);
@@ -312,15 +324,11 @@
     margin-bottom: 16px;
   }
 
-  .about-facts {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
+  .about-facts { display: flex; flex-direction: column; gap: 0; }
 
   .fact-row {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 12px;
     padding: 14px 0;
     border-bottom: 1px solid var(--border);
@@ -348,6 +356,7 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
     min-width: 90px;
+    flex-shrink: 0;
   }
 
   .fact-value {
@@ -389,7 +398,7 @@
     align-items: center;
     justify-content: center;
     font-family: var(--sans);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--blue);
     flex-shrink: 0;
@@ -422,8 +431,6 @@
     flex-wrap: wrap;
   }
 
-  .exp-meta-item { display: flex; align-items: center; gap: 4px; }
-
   .exp-highlights { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 
   .exp-highlight {
@@ -446,7 +453,6 @@
     border: 1px solid var(--border);
   }
 
-  /* THREE PERSPECTIVE PANELS */
   .exp-perspectives {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -471,26 +477,16 @@
     gap: 6px;
   }
 
-  .perspective-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+  .perspective-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
   .perspective.did .perspective-label { color: var(--ink-muted); }
   .perspective.did .perspective-dot { background: var(--ink-faint); }
-
   .perspective.contribute .perspective-label { color: var(--green); }
   .perspective.contribute .perspective-dot { background: var(--green); }
-
   .perspective.learnt .perspective-label { color: #c77b00; }
   .perspective.learnt .perspective-dot { background: var(--yellow); }
 
-  .perspective p {
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--ink-muted);
-  }
+  .perspective p { font-size: 13px; line-height: 1.7; color: var(--ink-muted); }
 
   /* SKILLS */
   .skills-grid {
@@ -515,7 +511,6 @@
     color: var(--ink);
     border-bottom: 1px solid var(--border);
     background: var(--surface);
-    letter-spacing: 0.2px;
   }
 
   .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px 16px; }
@@ -531,11 +526,7 @@
   }
 
   /* CONTACT */
-  .contact-wrap {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-  }
+  .contact-wrap { max-width: 640px; margin: 0 auto; text-align: center; }
 
   .contact-cards {
     display: grid;
@@ -579,12 +570,7 @@
     margin-bottom: 6px;
   }
 
-  .contact-card-value {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--blue);
-    word-break: break-all;
-  }
+  .contact-card-value { font-size: 13px; font-weight: 500; color: var(--blue); word-break: break-all; }
 
   /* PROJECTS PAGE */
   #page-projects { padding-top: 64px; min-height: 100vh; background: var(--surface); }
@@ -592,24 +578,18 @@
   .projects-hero {
     background: var(--paper);
     border-bottom: 1px solid var(--border);
-    padding: 48px 24px 40px;
+    padding: 48px 5vw 40px;
     text-align: center;
   }
 
   .projects-hero h2 { margin-bottom: 8px; }
-
-  .projects-hero p {
-    font-size: 15px;
-    color: var(--ink-muted);
-    max-width: 480px;
-    margin: 0 auto;
-  }
+  .projects-hero p { font-size: 15px; color: var(--ink-muted); max-width: 480px; margin: 0 auto; }
 
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 16px;
-    padding: 32px 24px;
+    padding: 32px 5vw;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -631,10 +611,6 @@
     background: var(--blue-light);
     padding: 20px 20px 16px;
     border-bottom: 1px solid var(--blue-mid);
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
   }
 
   .project-number {
@@ -655,14 +631,7 @@
   }
 
   .project-body { padding: 16px 20px; flex: 1; }
-
-  .project-desc {
-    font-size: 13px;
-    color: var(--ink-muted);
-    line-height: 1.7;
-    margin-bottom: 14px;
-  }
-
+  .project-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.7; margin-bottom: 14px; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
   .project-tag {
@@ -676,9 +645,8 @@
     font-family: var(--sans);
   }
 
-  /* FOOTER */
   footer {
-    padding: 24px;
+    padding: 24px 5vw;
     border-top: 1px solid var(--border);
     font-size: 13px;
     color: var(--ink-faint);
@@ -686,7 +654,6 @@
     justify-content: space-between;
     align-items: center;
     background: var(--paper);
-    max-width: 100%;
   }
 
   @media (max-width: 860px) {
@@ -694,20 +661,19 @@
     .exp-header { flex-direction: column; }
     .about-grid { grid-template-columns: 1fr; }
     .contact-cards { grid-template-columns: 1fr; }
+    .hero-stat { padding: 0 20px; }
   }
 
   @media (max-width: 680px) {
-    .nav-links { gap: 2px; }
     .nav-links a { padding: 8px 8px; font-size: 12px; }
     h1 { font-size: 2rem; }
-    .hero-stat { padding: 0 20px; }
     .projects-grid { grid-template-columns: 1fr; }
+    .hero-stat { min-width: 130px; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-left" onclick="showPage('home')">
     <div class="nav-logo">AM</div>
@@ -726,19 +692,18 @@
 <!-- HOME PAGE -->
 <div id="page-home" class="page visible">
 
-  <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
       <div class="hero-chip">
         <span class="hero-chip-dot"></span>
-        Open to new opportunities - Redmond, WA
+        Looking for my next opportunity to work with an exciting team. Open to start immediately. Located in Greater Seattle, WA but open to move anywhere across the US.
       </div>
-      <!-- EDIT HERE - your headline -->
       <h1>Engineering that<br><span>moves the needle.</span></h1>
       <p class="hero-sub">
-        6.5 years across manufacturing, industrial, design, and process engineering.
-        I build systems, cut waste, and turn data into decisions.
+        Being the first engineer in the family who came to the US with high passion and a goal to succeed in the field of engineering,
+        I have gained 6.5 years across manufacturing, industrial, design, and process engineering -
+        building systems, cutting waste, and turning data into decisions.
       </p>
       <div class="hero-actions">
         <a href="mailto:maanantmr@gmail.com" class="btn-primary">Get in touch</a>
@@ -746,7 +711,7 @@
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="hero-stat-number">18% → 2%</div>
+          <div class="hero-stat-number">18% - 2%</div>
           <div class="hero-stat-label">Downtime reduction at Amazon</div>
         </div>
         <div class="hero-stat">
@@ -755,7 +720,7 @@
         </div>
         <div class="hero-stat">
           <div class="hero-stat-number">4 domains</div>
-          <div class="hero-stat-label">Mfg · Industrial · Process · Design</div>
+          <div class="hero-stat-label">Mfg - Industrial - Process - Design</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-number">11+</div>
@@ -788,7 +753,7 @@
           <div class="fact-row">
             <div class="fact-icon">📍</div>
             <span class="fact-label">Location</span>
-            <span class="fact-value">Redmond, WA — open to relocate</span>
+            <span class="fact-value">Greater Seattle, WA - open to relocate anywhere in the US</span>
           </div>
           <div class="fact-row">
             <div class="fact-icon">🏢</div>
@@ -803,7 +768,7 @@
           <div class="fact-row">
             <div class="fact-icon">🏅</div>
             <span class="fact-label">Certs</span>
-            <span class="fact-value">CSWP · Lean Six Sigma · Agile PM · SCM</span>
+            <span class="fact-value">CSWP - Lean Six Sigma - Agile PM - SCM</span>
           </div>
           <div class="fact-row">
             <div class="fact-icon">🔬</div>
@@ -835,9 +800,9 @@
             <div class="exp-role">Sr. Engineer - Mechanical & Industrial</div>
             <div class="exp-company">Amazon LLC - Fulfillment & Distribution</div>
             <div class="exp-meta">
-              <span class="exp-meta-item">Feb 2025 - Mar 2026</span>
-              <span class="exp-meta-item">Redmond, WA</span>
-              <span class="exp-meta-item">Impacted by Jan 2026 restructuring</span>
+              <span>Feb 2025 - Mar 2026</span>
+              <span>Redmond, WA</span>
+              <span>Impacted by Jan 2026 restructuring</span>
             </div>
             <div class="exp-highlights">
               <span class="exp-highlight">$100M+ CapEx</span>
@@ -864,7 +829,7 @@
         </div>
       </div>
 
-      <!-- ELAN TECHNOLOGIES -->
+      <!-- ELAN -->
       <div class="exp-item">
         <div class="exp-header">
           <div class="exp-logo">ETI</div>
@@ -872,8 +837,8 @@
             <div class="exp-role">Mechanical Engineer II - NPI, Design, Manufacturing</div>
             <div class="exp-company">Elan Technologies, Inc.</div>
             <div class="exp-meta">
-              <span class="exp-meta-item">Nov 2023 - Jan 2025</span>
-              <span class="exp-meta-item">Medical Device NPI</span>
+              <span>Nov 2023 - Jan 2025</span>
+              <span>Medical Device NPI</span>
             </div>
             <div class="exp-highlights">
               <span class="exp-highlight">NPI end-to-end</span>
@@ -907,8 +872,8 @@
             <div class="exp-role">Manufacturing Engineer - Process, Design, Automation</div>
             <div class="exp-company">Vizgen, Inc. - Genomics Startup</div>
             <div class="exp-meta">
-              <span class="exp-meta-item">Apr 2023 - Oct 2023</span>
-              <span class="exp-meta-item">Impacted by Oct 2023 startup budget cut</span>
+              <span>Apr 2023 - Oct 2023</span>
+              <span>Impacted by Oct 2023 startup budget cut</span>
             </div>
             <div class="exp-highlights">
               <span class="exp-highlight">0-1 production ramp</span>
@@ -942,7 +907,7 @@
             <div class="exp-role">Manufacturing Engineer Intern - Automation, Design</div>
             <div class="exp-company">Insulet Corporation</div>
             <div class="exp-meta">
-              <span class="exp-meta-item">Jan 2022 - Mar 2022</span>
+              <span>Jan 2022 - Mar 2022</span>
               <span class="exp-intern-badge">Internship</span>
             </div>
             <div class="exp-highlights">
@@ -969,7 +934,7 @@
         </div>
       </div>
 
-      <!-- FLEX LTD -->
+      <!-- FLEX -->
       <div class="exp-item">
         <div class="exp-header">
           <div class="exp-logo">FLX</div>
@@ -977,7 +942,7 @@
             <div class="exp-role">Mechanical Engineer - Process, Design, Automation</div>
             <div class="exp-company">Flex Ltd.</div>
             <div class="exp-meta">
-              <span class="exp-meta-item">Jan 2019 - Dec 2020</span>
+              <span>Jan 2019 - Dec 2020</span>
             </div>
             <div class="exp-highlights">
               <span class="exp-highlight">NPI / supply chain</span>
@@ -1076,7 +1041,7 @@
       <div class="contact-wrap">
         <div class="section-eyebrow">Contact</div>
         <h2>Get in touch</h2>
-        <p class="section-desc" style="margin: 0 auto 0;">Open to Manufacturing, Industrial, Mechanical Design, Process Engineering, TPM, and Project Engineer roles.</p>
+        <p class="section-desc" style="margin: 0 auto;">Open to Manufacturing, Industrial, Mechanical Design, Process Engineering, TPM, and Project Engineer roles. Available to start immediately.</p>
         <div class="contact-cards">
           <a href="mailto:maanantmr@gmail.com" class="contact-card">
             <div class="contact-card-icon">✉</div>
@@ -1125,10 +1090,8 @@
     <!-- START PROJECT CARD -->
     <div class="project-card">
       <div class="project-card-top">
-        <div>
-          <div class="project-number">01</div>
-          <div class="project-title">$100M+ Semi-Automated Distribution Center</div>
-        </div>
+        <div class="project-number">01</div>
+        <div class="project-title">$100M+ Semi-Automated Distribution Center</div>
       </div>
       <div class="project-body">
         <p class="project-desc">End-to-end ownership of a major Amazon CapEx program - AutoCAD layouts, MES integration, AMR/ASRS/Fanuc robotics, SolidWorks GD&T fixtures, and Flexsim process simulation. Reduced critical zone downtime from 18% to 2% and delivered $6.4M positive cash flow by Year 3.</p>
@@ -1147,10 +1110,8 @@
     <!-- START PROJECT CARD -->
     <div class="project-card">
       <div class="project-card-top">
-        <div>
-          <div class="project-number">02</div>
-          <div class="project-title">AI-Assisted Battery Optimization Tool</div>
-        </div>
+        <div class="project-number">02</div>
+        <div class="project-title">AI-Assisted Battery Optimization Tool</div>
       </div>
       <div class="project-body">
         <p class="project-desc">Built an AI-assisted Lithium-Ion battery utilization tool to reduce system flow downtime by 18%, saving an estimated $360,000 per week. Covered full cycle - design, testing, prototyping, monitoring, and vendor collaboration.</p>
@@ -1167,10 +1128,8 @@
     <!-- START PROJECT CARD -->
     <div class="project-card">
       <div class="project-card-top">
-        <div>
-          <div class="project-number">03</div>
-          <div class="project-title">Python AI Supply Chain Planning Model</div>
-        </div>
+        <div class="project-number">03</div>
+        <div class="project-title">Python AI Supply Chain Planning Model</div>
       </div>
       <div class="project-body">
         <p class="project-desc">Developed a Python-based AI model for 3-year supply chain capacity and demand planning - the first AI-assisted decision tool in Amazon's industrial workflow. Improved business decision accuracy by 15%.</p>
@@ -1188,10 +1147,8 @@
     <!-- START PROJECT CARD -->
     <div class="project-card">
       <div class="project-card-top">
-        <div>
-          <div class="project-number">04</div>
-          <div class="project-title">Ergonomic Safety CapEx - 12 Fulfillment Sites</div>
-        </div>
+        <div class="project-number">04</div>
+        <div class="project-title">Ergonomic Safety CapEx - 12 Fulfillment Sites</div>
       </div>
       <div class="project-body">
         <p class="project-desc">Piloted a $1.5M OSHA-compliant ergonomic systems program across 12 Amazon fulfillment centers. Achieved 11% reduction in safety incidents, 20% improvement in cycle/takt time, and $250K net cost benefit.</p>
@@ -1208,10 +1165,8 @@
     <!-- START PROJECT CARD -->
     <div class="project-card">
       <div class="project-card-top">
-        <div>
-          <div class="project-number">05</div>
-          <div class="project-title">$350K NPI Program - Medical Device Assembly</div>
-        </div>
+        <div class="project-number">05</div>
+        <div class="project-title">$350K NPI Program - Medical Device Assembly</div>
       </div>
       <div class="project-body">
         <p class="project-desc">Full NPI lifecycle at Elan Technologies from SolidWorks design through IQ/OQ/PQ qualification. Designed DFM/DFA jigs and fixtures for a semi-automated assembly line, reducing defects by 20% and improving OEE by 5%.</p>
@@ -1229,10 +1184,8 @@
     <!-- START PROJECT CARD -->
     <div class="project-card">
       <div class="project-card-top">
-        <div>
-          <div class="project-number">06</div>
-          <div class="project-title">0-1 Production Line - Vizgen, Inc.</div>
-        </div>
+        <div class="project-number">06</div>
+        <div class="project-title">0-1 Production Line - Vizgen, Inc.</div>
       </div>
       <div class="project-body">
         <p class="project-desc">Established a production line from scratch at a genomics startup - Power BI/SQL dashboards, NCMR/CAPA/ECO cycles, robotic arm training, and a preventive maintenance program across 20 machines that cut failure rate by 5%.</p>
